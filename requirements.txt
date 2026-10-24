@@ -1,0 +1,10 @@
+# Hurston-1 inference. Tested with Python 3.12, torch 2.11, transformers 4.57, snac 1.2.1.
+torch>=2.4
+transformers>=4.45
+snac>=1.2
+soundfile
+scipy
+numpy
+huggingface_hub
+# Optional, only for --check (retry takes Whisper cannot follow or where the voice changes mid-take):
+#   pip install speechbrain

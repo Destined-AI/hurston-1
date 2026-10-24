@@ -1,0 +1,11 @@
+Hurston-1 (ClarityVoice family)
+Copyright 2026 Destined AI
+
+This model is a modified version of Maya1 by Maya Research, licensed under the Apache License 2.0.
+Modifications: LoRA fine-tuning (rank 64) on accented English speech and merging the adapter into the base weights;
+new inference script (hurston.py).
+
+Training data credits:
+- LibriTTS-R (Koizumi et al., 2023), CC BY 4.0
+- Mozilla Common Voice, CC0
+- Destined AI accented English corpus (not distributed)

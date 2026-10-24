@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use Hurston-1, please cite it as below."
+type: software
+title: "Hurston-1: Accented English Narrowband Text-to-Speech (NB-TTS) for the Phone"
+authors:
+  - name: "Destined AI"
+    website: "https://destined.ai"
+date-released: 2026-10-21
+license: Apache-2.0
+url: "https://github.com/Destined-AI/hurston-1"
+repository-artifact: "https://huggingface.co/destined/hurston-1"
+keywords:
+  - text-to-speech
+  - accents
+  - telephony
+  - narrowband
+  - nb-tts
