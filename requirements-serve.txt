@@ -1,0 +1,6 @@
+# Extra packages for serve.py (the OpenAI-compatible speech server). Install with:
+#   pip install -r requirements.txt -r requirements-serve.txt
+fastapi>=0.110
+uvicorn[standard]>=0.29
+# Streaming backend (recommended, NVIDIA GPU): first audio in ~0.2 s. Without it, serve.py falls back to transformers.
+vllm>=0.11

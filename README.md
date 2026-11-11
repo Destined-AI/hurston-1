@@ -138,6 +138,18 @@ payload = ulaw_encode(call)   # 8 kHz mu-law bytes; base64 it for a Twilio media
 
 More in [docs/PHONE.md](docs/PHONE.md).
 
+## Run it as a speech server (Dograh and other OpenAI-compatible clients)
+
+`serve.py` exposes Hurston-1 as an OpenAI-compatible `/v1/audio/speech` endpoint on your own GPU, so voice-agent
+platforms that take an OpenAI-style TTS URL with custom voice names can use it. With vLLM, audio starts streaming about 0.2 s after a request.
+
+```bash
+pip install -r requirements.txt -r requirements-serve.txt
+python serve.py        # http://0.0.0.0:8890/v1, voices at /v1/audio/voices (e.g. southern-female, nigerian-male)
+```
+
+Setup for [Dograh](https://github.com/dograh-hq/dograh), voice names and limits: [docs/DOGRAH.md](docs/DOGRAH.md).
+
 ## What people build with it
 
 Some places to start. At Destined AI we use accented TTS like this to build broad, high-quality test data, and that is
