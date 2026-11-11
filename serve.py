@@ -201,6 +201,10 @@ class VLLMEngine:
             y = await self._dec(codes, a, frames)
             yield y[(s - a) * self.HOP:]
 
+    def shutdown(self):
+        try: self.llm.shutdown()
+        except Exception as e: log.warning('engine shutdown: %s', e)
+
 
 class TransformersEngine:
     name = 'transformers'
@@ -222,7 +226,15 @@ class TransformersEngine:
 def build_app(engine, api_key=None, model_name='hurston-1'):
     from fastapi import FastAPI, Request
     from fastapi.responses import JSONResponse, StreamingResponse, Response
-    app = FastAPI(title='Hurston-1 speech server')
+    from contextlib import asynccontextmanager
+
+    @asynccontextmanager
+    async def lifespan(app):
+        yield
+        stop = getattr(engine, 'shutdown', None)   # vLLM's engine runs in a child process; stop it with the server
+        if stop: stop()
+
+    app = FastAPI(title='Hurston-1 speech server', lifespan=lifespan)
 
     def denied(req):
         if not api_key: return False
